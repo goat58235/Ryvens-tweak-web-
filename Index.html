@@ -1,1247 +1,340 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RYVEN TWEAKER — We Want You To Climb To The Top</title>
-    <style>
-        /* ==========================================================================
-           RYVEN TWEAKER - CORE SYSTEM STYLES (MONOCHROME / TECHNICAL HARDWARE THEME)
-           ========================================================================== */
-        :root {
-            --bg-black: #050505;
-            --bg-panel: #0d0d10;
-            --bg-card: #131317;
-            --bg-card-hover: #191920;
-            --border-dark: #202026;
-            --border-light: #30303b;
-            --border-silver: #424252;
-            --text-main: #f0f2f5;
-            --text-muted: #88889a;
-            --text-dim: #555566;
-            --accent-blue: #3478F6;
-            --accent-red: #E63946;
-            --accent-green: #2a9d8f;
-            --silver-bright: #BFC3C9;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", "Consolas", monospace;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ryven Tweaker — Windows PC tweaking and optimization.">
+<title>RYVEN TWEAKER — Climb To The Top</title>
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.5;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+body {
+    background: #080808;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
 
-        /* Technical Background Cross-Hatch Grid Overlay */
-        .tech-grid-bg {
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    border-bottom: 1px solid #242424;
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-black);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-light);
-            border-radius: 1px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--silver-bright);
-        }
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
 
-        /* Typography & Utility Headers */
-        .font-mono { font-family: var(--font-mono); }
-        .tracking-technical { letter-spacing: 0.12em; }
-        
-        /* Razor-Sharp Panels */
-        .ryven-panel {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-dark);
-            border-radius: 2px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        }
+.logo span {
+    color: #e63946;
+}
 
-        .ryven-panel-interactive {
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-        .ryven-panel-interactive:hover {
-            border-color: var(--border-silver);
-            transform: translateY(-2px);
-        }
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 14px;
+}
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            items-center;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            text-decoration: none;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-        }
+nav a:hover {
+    color: white;
+}
 
-        .btn-silver {
-            background: linear-gradient(180deg, #FFFFFF 0%, #BFC3C9 100%);
-            color: #050505;
-            border-color: #FFFFFF;
-        }
-        .btn-silver:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
-            transform: translateY(-1px);
-        }
+.hero {
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px;
+    background: radial-gradient(ellipse at top, #241012 0%, #080808 65%);
+}
 
-        .btn-outline {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border-color: var(--border-light);
-        }
-        .btn-outline:hover {
-            border-color: var(--text-main);
-            background: var(--bg-card-hover);
-        }
+.tag {
+    color: #ff555f;
+    border: 1px solid #512127;
+    border-radius: 30px;
+    padding: 6px 15px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
 
-        /* Layout Container */
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.25rem;
-        }
+h1 {
+    font-size: clamp(42px, 9vw, 86px);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1.1;
+}
 
-        /* Badge Pills */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.2rem 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 1px;
-            letter-spacing: 0.05em;
-        }
-        .badge-available { background: rgba(42, 157, 143, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
-        .badge-planned { background: rgba(52, 120, 246, 0.15); color: var(--accent-blue); border: 1px solid rgba(52, 120, 246, 0.3); }
-        .badge-info { background: rgba(255, 255, 255, 0.05); color: var(--silver-bright); border: 1px solid var(--border-light); }
-        
-        .badge-risk-low { background: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.2); }
-        .badge-risk-caution { background: rgba(234, 179, 8, 0.1); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.2); }
-        .badge-risk-expert { background: rgba(230, 57, 70, 0.15); color: var(--accent-red); border: 1px solid rgba(230, 57, 70, 0.3); }
+h1 span {
+    color: #e63946;
+}
 
-        /* Navigation Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-dark);
-        }
-        .nav-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-        .brand-title {
-            font-size: 1.1rem;
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            color: #ffffff;
-            line-height: 1;
-        }
-        .brand-motto-ticker {
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            color: var(--accent-blue);
-            letter-spacing: 0.1em;
-            margin-top: 3px;
-        }
+.hero p {
+    max-width: 570px;
+    color: #aaa;
+    margin: 24px 0 32px;
+    font-size: 17px;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-        .nav-link {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: color 0.2s ease;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: #ffffff;
-        }
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #ffffff;
-        }
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: 1px solid var(--border-light);
-            color: #ffffff;
-            padding: 0.4rem 0.75rem;
-            cursor: pointer;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
 
-        /* Layout Grid Helpers */
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.primary {
+    background: #e63946;
+    color: white;
+}
 
-        /* Tab Visibility */
-        .tab-section { display: none; padding-top: 100px; padding-bottom: 80px; }
-        .tab-section.active { display: block; }
+.primary:hover {
+    background: #ff4c59;
+    transform: translateY(-2px);
+}
 
-        /* Form Inputs */
-        input[type="text"], input[type="url"] {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dark);
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 2px;
-            width: 100%;
-            outline: none;
-            transition: border-color 0.2s ease;
-        }
-        input[type="text"]:focus, input[type="url"]:focus {
-            border-color: var(--silver-bright);
-        }
+.secondary {
+    border: 1px solid #444;
+    color: white;
+}
 
-        /* Modal Overlay */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        .modal-overlay.open { display: flex; }
-        .modal-card {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-silver);
-            max-width: 600px;
-            width: 100%;
-            padding: 2rem;
-            position: relative;
-        }
+.secondary:hover {
+    background: #202020;
+}
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .hero-split { grid-template-columns: 1fr !important; }
-            .tweak-explorer-layout { grid-template-columns: 1fr !important; }
-        }
+section.content {
+    padding: 75px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.mobile-open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-panel);
-                border-bottom: 1px solid var(--border-dark);
-                padding: 1.5rem;
-                gap: 1rem;
-            }
-            .mobile-menu-btn { display: block; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2.25rem !important; }
-        }
-    </style>
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.section-desc {
+    color: #999;
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #999;
+    font-size: 14px;
+}
+
+.download-panel {
+    background: linear-gradient(135deg, #191010, #111);
+    border: 1px solid #422025;
+    border-radius: 12px;
+    padding: 38px 25px;
+    text-align: center;
+}
+
+.version {
+    color: #ff626c;
+    margin: 12px 0 22px;
+    font-size: 14px;
+}
+
+.notice {
+    color: #888;
+    font-size: 12px;
+    margin-top: 17px;
+}
+
+footer {
+    border-top: 1px solid #242424;
+    text-align: center;
+    padding: 28px 15px;
+    color: #777;
+    font-size: 13px;
+}
+
+footer a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    section.content {
+        padding: 55px 6%;
+    }
+}
+</style>
 </head>
-<body class="tech-grid-bg">
 
-    <!-- ==========================================================================
-       1. NAVIGATION HEADER
-       ========================================================================== -->
-    <header>
-        <div class="container nav-wrapper">
-            <!-- Custom Logo & Wordmark -->
-            <a class="brand-logo" onclick="switchTab('home')">
-                <!-- Custom SVG Logo: Angular 'R' + Integrated Upward Arrow Crest -->
-                <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Sharp Outer Hexagonal/Angular Crest Shield -->
-                    <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" stroke="#FFFFFF" stroke-width="4" fill="#0D0D10"/>
-                    <!-- Upward Arrow Crest Stem Integration -->
-                    <path d="M50 15 L70 35 L58 35 L58 52 L42 52 L42 35 L30 35 Z" fill="#3478F6"/>
-                    <!-- Sharp Angular Geometric 'R' Legs -->
-                    <path d="M32 45 L54 45 C64 45 68 50 68 58 C68 65 62 68 54 68 L44 68 L44 82 L32 82 Z" fill="#FFFFFF"/>
-                    <path d="M44 54 L52 54 C58 54 60 56 60 59 C60 62 58 64 52 64 L44 64 Z" fill="#0D0D10"/>
-                    <path d="M54 68 L68 82 L55 82 L44 70 Z" fill="#BFC3C9"/>
-                </svg>
-                <div class="brand-text">
-                    <span class="brand-title">RYVEN <span style="color: var(--text-muted); font-weight:300;">TWEAKER</span></span>
-                    <span class="brand-motto-ticker font-mono">"WE WANT YOU TO CLIMB TO THE TOP."</span>
-                </div>
+<body>
+
+<header>
+    <div class="logo">RYVEN<span>.</span></div>
+    <nav>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="tag">BUILT FOR WINDOWS</div>
+
+        <h1>RYVEN <span>TWEAKER</span></h1>
+
+        <p>
+            Take control of your PC. Explore Windows tweaking
+            and optimization tools designed for your setup.
+            We want you to climb to the top.
+        </p>
+
+        <div class="buttons">
+            <a class="btn primary" href="#download">
+                DOWNLOAD RYVEN
             </a>
 
-            <!-- Navigation Links -->
-            <ul class="nav-links" id="nav-menu">
-                <li><button class="nav-link active" id="nav-btn-home" onclick="switchTab('home')">Overview</button></li>
-                <li><button class="nav-link" id="nav-btn-tweaks" onclick="switchTab('tweaks')">Tweak Explorer</button></li>
-                <li><button class="nav-link" id="nav-btn-telemetry" onclick="switchTab('telemetry')">Telemetry</button></li>
-                <li><button class="nav-link" id="nav-btn-download" onclick="switchTab('download')">Download Center</button></li>
-                <li><button class="nav-link" id="nav-btn-about" onclick="switchTab('about')">FAQ & Safety</button></li>
-            </ul>
-
-            <!-- Mobile Toggle -->
-            <button class="mobile-menu-btn" onclick="toggleMobileNav()">MENU</button>
-
-            <!-- Quick Action -->
-            <div style="display: flex; gap: 0.5rem;" class="nav-actions">
-                <button onclick="switchTab('download')" class="btn btn-silver" style="padding: 0.5rem 1rem; font-size: 0.7rem;">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/></svg>
-                    GET .EXE
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- ==========================================================================
-       2. TAB SECTION 1: HOMEPAGE / HERO
-       ========================================================================== -->
-    <section id="tab-home" class="tab-section active">
-        <div class="container">
-            
-            <!-- Hero Top Header -->
-            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center;" class="hero-split">
-                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                    
-                    <!-- Motto Badge -->
-                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content;" class="badge badge-info">
-                        <span style="width: 6px; height: 6px; background: var(--accent-blue); border-radius: 50%;"></span>
-                        OFFICIAL BRAND MOTTO: WE WANT YOU TO CLIMB TO THE TOP
-                    </div>
-
-                    <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase;">
-                        YOUR PC.<br/>
-                        <span style="color: var(--silver-bright);">YOUR PERFORMANCE.</span><br/>
-                        <span style="color: var(--accent-blue);">YOUR ADVANTAGE.</span>
-                    </h1>
-
-                    <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; line-height: 1.6;">
-                        Take control of your Windows experience with high-precision system tweaks, latency optimizations, telemetry controls, and automated restoration tools. Engineered specifically for competitive gamers.
-                    </p>
-
-                    <!-- Compatibility Meta -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.7rem;" class="font-mono">
-                        <span style="border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; background: var(--bg-panel);">WINDOWS 10 (21H2+)</span>
-                        <span style="border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; background: var(--bg-panel);">WINDOWS 11 (ALL BUILDS)</span>
-                        <span style="border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; background: var(--bg-panel);">x64 ARCHITECTURE</span>
-                    </div>
-
-                    <!-- Call To Action Group -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
-                        <button onclick="switchTab('download')" class="btn btn-silver" style="padding: 0.9rem 1.75rem;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                            DOWNLOAD FOR WINDOWS (.EXE)
-                        </button>
-                        <button onclick="switchTab('tweaks')" class="btn btn-outline" style="padding: 0.9rem 1.75rem;">
-                            EXPLORE TWEAK LIBRARY
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Live Desktop Application Mockup Window -->
-                <div class="ryven-panel" style="padding: 1.25rem; position: relative;">
-                    <!-- App TitleBar -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.75rem; margin-bottom: 1rem;" class="font-mono">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 10px; height: 10px; background: var(--accent-red); border-radius: 50%;"></span>
-                            <span style="width: 10px; height: 10px; background: #eab308; border-radius: 50%;"></span>
-                            <span style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%;"></span>
-                            <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: 0.5rem; font-weight: 700;">RYVEN TWEAKER v1.2.0 — ENGINE PREVIEW</span>
-                        </div>
-                        <span class="badge badge-available" style="font-size: 0.55rem;">RESTORE POINT READY</span>
-                    </div>
-
-                    <!-- Mockup App Dashboard Area -->
-                    <div style="display: grid; grid-template-columns: 140px 1fr; gap: 1rem;" class="font-mono">
-                        <!-- Sidebar Navigation inside preview -->
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.65rem; border-right: 1px solid var(--border-dark); padding-right: 0.75rem;">
-                            <div style="background: var(--bg-card-hover); color: #fff; padding: 0.4rem 0.5rem; font-weight: bold; border-left: 2px solid var(--accent-blue);">DASHBOARD</div>
-                            <div style="color: var(--text-muted); padding: 0.4rem 0.5rem;">GAMING ENGINE</div>
-                            <div style="color: var(--text-muted); padding: 0.4rem 0.5rem;">LATENCY STACK</div>
-                            <div style="color: var(--text-muted); padding: 0.4rem 0.5rem;">TELEMETRY PRIVACY</div>
-                            <div style="color: var(--text-muted); padding: 0.4rem 0.5rem;">RESTORE ENGINE</div>
-                        </div>
-
-                        <!-- Main Content inside Preview -->
-                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                            <!-- Telemetry Meter Box -->
-                            <div style="background: var(--bg-card); padding: 0.75rem; border: 1px solid var(--border-dark);">
-                                <div style="display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 0.3rem;">
-                                    <span style="color: var(--text-muted);">KERNEL TIMER LATENCY</span>
-                                    <span style="color: var(--accent-blue); font-weight: bold;">0.500 ms (LOCKED)</span>
-                                </div>
-                                <div style="width: 100%; height: 6px; background: var(--bg-black); border-radius: 1px; overflow: hidden;">
-                                    <div style="width: 95%; height: 100%; background: var(--accent-blue);"></div>
-                                </div>
-                            </div>
-
-                            <!-- Interactive Mockup Toggles -->
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.65rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-black); padding: 0.5rem; border: 1px solid var(--border-dark);">
-                                    <span>Disable Windows Telemetry & DiagTrack</span>
-                                    <span style="color: #4ade80; font-weight: bold;">[ACTIVE]</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-black); padding: 0.5rem; border: 1px solid var(--border-dark);">
-                                    <span>Nagle's Algorithm TCP NoDelay Delay Bypass</span>
-                                    <span style="color: #4ade80; font-weight: bold;">[ACTIVE]</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-black); padding: 0.5rem; border: 1px solid var(--border-dark);">
-                                    <span>Ultimate Performance Power Scheme</span>
-                                    <span style="color: #4ade80; font-weight: bold;">[ACTIVE]</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Key Feature Pillar Highlights -->
-            <div style="margin-top: 5rem;" class="grid-3">
-                <div class="ryven-panel ryven-panel-interactive" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                    <div style="font-size: 0.7rem; font-weight: 700; color: var(--accent-blue);" class="font-mono">01 / PRECISION LATENCY</div>
-                    <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase;">Kernel Timer Tuning</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
-                        Forces system-wide high-resolution kernel timer resolution down to 0.5ms, dramatically reducing micro-stuttering and input delay in competitive FPS titles.
-                    </p>
-                </div>
-
-                <div class="ryven-panel ryven-panel-interactive" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                    <div style="font-size: 0.7rem; font-weight: 700; color: var(--silver-bright);" class="font-mono">02 / DEBLOAT & PRIVACY</div>
-                    <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase;">Telemetry Elimination</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
-                        Stops background diagnostic collection, DiagTrack tasks, and unnecessary Microsoft telemetry services that consume background CPU cycles during gameplay.
-                    </p>
-                </div>
-
-                <div class="ryven-panel ryven-panel-interactive" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                    <div style="font-size: 0.7rem; font-weight: 700; color: #4ade80;" class="font-mono">03 / SAFETY GUARANTEE</div>
-                    <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase;">One-Click Reversibility</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
-                        Every modified Windows setting and registry key can be instantly restored to default. Automated system restore points are created prior to applying tweaks.
-                    </p>
-                </div>
-            </div>
-
+            <a class="btn secondary"
+               href="https://github.com/goat58235">
+                VIEW GITHUB
+            </a>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       3. TAB SECTION 2: TWEAK EXPLORER / LIBRARY
-       ========================================================================== -->
-    <section id="tab-tweaks" class="tab-section">
-        <div class="container">
-            
-            <div style="margin-bottom: 2rem;">
-                <span class="badge badge-info" style="margin-bottom: 0.5rem;">COMPREHENSIVE DATABASE</span>
-                <h2 style="font-size: 2.25rem; font-weight: 900; text-transform: uppercase;">TWEAK <span style="color: var(--text-muted);">EXPLORER</span></h2>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Browse and search every system modification module in the Ryven database with complete transparency.</p>
-            </div>
+    <section class="content" id="features">
+        <h2 class="section-title">BUILT TO TWEAK</h2>
+        <p class="section-desc">
+            A clean experience focused on your Windows PC.
+        </p>
 
-            <!-- Explorer Controls (Search & Filters) -->
-            <div class="ryven-panel" style="padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-                
-                <div style="display: grid; grid-template-columns: 1fr auto; gap: 1rem;">
-                    <!-- Search Input -->
-                    <input type="text" id="tweak-search" oninput="filterTweakLibrary()" placeholder="Search tweaks (e.g., Telemetry, Latency, Nagle, GameDVR, Power Plan)...">
-                    
-                    <!-- Search Counter -->
-                    <div style="display: flex; align-items: center; padding: 0 1rem; background: var(--bg-card); border: 1px solid var(--border-dark); font-size: 0.7rem;" class="font-mono">
-                        SHOWING <span id="tweak-count-display" style="color: var(--silver-bright); font-weight: bold; margin: 0 0.3rem;">15</span> MODULES
-                    </div>
-                </div>
-
-                <!-- Category Pills -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" class="font-mono" id="category-filter-bar">
-                    <button class="btn btn-silver" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('ALL', this)">ALL CATEGORIES</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('GAMING', this)">GAMING</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('PERFORMANCE', this)">PERFORMANCE</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('NETWORK', this)">NETWORK</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('PRIVACY', this)">PRIVACY</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('SYSTEM', this)">SYSTEM</button>
-                    <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.65rem;" onclick="setCategoryFilter('ADVANCED', this)">ADVANCED</button>
-                </div>
-            </div>
-
-            <!-- Tweaks Cards Grid -->
-            <div id="tweaks-grid" class="grid-3">
-                <!-- Injected dynamically via JavaScript -->
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       4. TAB SECTION 3: SYSTEM TELEMETRY & STATS DASHBOARD
-       ========================================================================== -->
-    <section id="tab-telemetry" class="tab-section">
-        <div class="container">
-            
-            <div style="margin-bottom: 2rem;">
-                <span class="badge badge-info" style="margin-bottom: 0.5rem;">HARDWARE & SOFTWARE SPECIFICATIONS</span>
-                <h2 style="font-size: 2.25rem; font-weight: 900; text-transform: uppercase;">TELEMETRY <span style="color: var(--text-muted);">DASHBOARD</span></h2>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Live system analysis powered by web hardware APIs and software telemetry metadata.</p>
-            </div>
-
-            <!-- Disclaimer Notice -->
-            <div class="ryven-panel" style="padding: 1rem; border-left: 3px solid var(--accent-blue); margin-bottom: 1.5rem; font-size: 0.75rem;" class="font-mono">
-                <strong>DATA INTEGRITY NOTICE:</strong> Hardware specs below are queried directly from your web browser navigator engine. No fake readings or benchmark estimates are simulated.
-            </div>
-
-            <!-- Telemetry Cards Grid -->
-            <div class="grid-4" style="margin-bottom: 2rem;">
-                
-                <div class="ryven-panel" style="padding: 1.25rem;" class="font-mono">
-                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">CPU LOGICAL THREADS</div>
-                    <div id="telemetry-cpu-cores" style="font-size: 1.75rem; font-weight: 900; color: #fff; margin: 0.25rem 0;">DETECTING...</div>
-                    <span class="badge badge-info" style="font-size: 0.55rem;">navigator.hardwareConcurrency</span>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.25rem;" class="font-mono">
-                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">SYSTEM MEMORY (APPROX)</div>
-                    <div id="telemetry-ram" style="font-size: 1.75rem; font-weight: 900; color: var(--silver-bright); margin: 0.25rem 0;">DETECTING...</div>
-                    <span class="badge badge-info" style="font-size: 0.55rem;">navigator.deviceMemory</span>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.25rem;" class="font-mono">
-                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">SCREEN RESOLUTION</div>
-                    <div id="telemetry-screen" style="font-size: 1.75rem; font-weight: 900; color: #fff; margin: 0.25rem 0;">DETECTING...</div>
-                    <span class="badge badge-info" style="font-size: 0.55rem;">screen.width x height</span>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.25rem;" class="font-mono">
-                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">USER AGENT PLATFORM</div>
-                    <div id="telemetry-platform" style="font-size: 1.1rem; font-weight: 900; color: var(--accent-blue); margin: 0.5rem 0; word-break: break-all;">DETECTING...</div>
-                    <span class="badge badge-info" style="font-size: 0.55rem;">navigator.platform</span>
-                </div>
-
-            </div>
-
-            <!-- Software Specs Grid -->
-            <div class="grid-2">
-                <div class="ryven-panel" style="padding: 1.5rem;">
-                    <h3 style="font-size: 1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;" class="font-mono">
-                        SOFTWARE SPECIFICATIONS
-                    </h3>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem;" class="font-mono">
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.5rem;">
-                            <span style="color: var(--text-muted);">CURRENT CLIENT VERSION</span>
-                            <span style="color: #fff; font-weight: bold;">v1.2.0-stable</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.5rem;">
-                            <span style="color: var(--text-muted);">TOTAL TWEAK MODULES</span>
-                            <span style="color: #fff; font-weight: bold;">15 Complete / 13 Planned</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.5rem;">
-                            <span style="color: var(--text-muted);">SYSTEM RESTORE COMPATIBILITY</span>
-                            <span style="color: #4ade80; font-weight: bold;">ENABLED (VSS/VDS)</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: var(--text-muted);">APPLICATION ARCHITECTURE</span>
-                            <span style="color: #fff; font-weight: bold;">x64 Native (.NET 8.0)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.5rem;">
-                    <h3 style="font-size: 1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;" class="font-mono">
-                        FEATURE COMPARISON MATRIX
-                    </h3>
-                    <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.75rem;" class="font-mono">
-                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; font-weight: bold; color: var(--text-muted); border-bottom: 1px solid var(--border-dark); padding-bottom: 0.4rem;">
-                            <span>CAPABILITY</span>
-                            <span>STOCK WIN</span>
-                            <span>RYVEN</span>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.4rem;">
-                            <span>0.5ms Timer Locking</span>
-                            <span style="color: var(--accent-red);">NO</span>
-                            <span style="color: #4ade80;">YES</span>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.4rem;">
-                            <span>Nagle TCP Delay Bypass</span>
-                            <span style="color: var(--accent-red);">NO</span>
-                            <span style="color: #4ade80;">YES</span>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr;">
-                            <span>Full Telemetry Debloat</span>
-                            <span style="color: var(--accent-red);">NO</span>
-                            <span style="color: #4ade80;">YES</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       5. TAB SECTION 4: DOWNLOAD CENTER
-       ========================================================================== -->
-    <section id="tab-download" class="tab-section">
-        <div class="container" style="max-width: 900px;">
-            
-            <div class="ryven-panel" style="padding: 2.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-                
-                <span class="badge badge-info">OFFICIAL PRODUCTION RELEASE</span>
-
-                <h2 style="font-size: 2.5rem; font-weight: 900; text-transform: uppercase;">
-                    DOWNLOAD <span style="color: var(--silver-bright);">RYVEN TWEAKER</span>
-                </h2>
-
-                <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 550px;">
-                    Standalone Windows desktop application. No installer required. Download, run as Administrator, and optimize.
+        <div class="features">
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Performance</h3>
+                <p>
+                    Explore available Windows configuration
+                    options for your PC.
                 </p>
+            </div>
 
-                <!-- DYNAMIC GITHUB RELEASE LINK BINDING BOX -->
-                <div style="background: var(--bg-black); border: 1px solid var(--border-dark); padding: 1.25rem; width: 100%; max-width: 650px; text-align: left;" class="font-mono">
-                    <div style="font-size: 0.7rem; font-weight: bold; color: var(--silver-bright); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                        CONNECT GITHUB RELEASE (.EXE) DIRECT LINK
-                    </div>
-                    <p style="font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-                        Website Owner: Paste your direct GitHub Release executable URL below to dynamically update all download buttons on this site.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <input type="url" id="github-url-input" placeholder="https://github.com/YourRepo/RyvenTweaker/releases/download/v1.2.0/RyvenTweaker.exe">
-                        <button onclick="bindGithubReleaseUrl()" class="btn btn-silver" style="font-size: 0.65rem; padding: 0.5rem 1rem; whitespace-nowrap;">
-                            BIND LINK
-                        </button>
-                    </div>
-                    <div id="url-status-message" style="font-size: 0.65rem; color: #4ade80; margin-top: 0.5rem; display: none;"></div>
-                </div>
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>System Tweaks</h3>
+                <p>
+                    Access supported system settings in one
+                    dedicated application.
+                </p>
+            </div>
 
-                <!-- Primary Download Button -->
-                <a id="master-download-btn" href="https://github.com" target="_blank" class="btn btn-silver" style="padding: 1.25rem 2.5rem; font-size: 0.9rem; margin-top: 1rem;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    DOWNLOAD RYVEN TWEAKER (.EXE)
+            <div class="card">
+                <div class="icon">🛡️</div>
+                <h3>Control</h3>
+                <p>
+                    Make informed changes and back up important
+                    settings before applying tweaks.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="download">
+        <div class="download-panel">
+            <h2>GET RYVEN TWEAKER</h2>
+
+            <p class="version">
+                Windows x64 · .NET 8 · Single-file EXE
+            </p>
+
+            <div class="buttons">
+                <a class="btn primary"
+                   href="https://github.com/goat58235/Ryven-Tweaker/releases/latest"
+                   id="downloadButton">
+                    DOWNLOAD FOR WINDOWS
                 </a>
 
-                <div style="font-size: 0.7rem; color: var(--text-muted);" class="font-mono">
-                    BUILD: v1.2.0-STABLE | PORTABLE EXECUTABLE | SIZE: ~14.2 MB
-                </div>
-
-                <!-- Installation Instructions -->
-                <div style="text-align: left; width: 100%; border-top: 1px solid var(--border-dark); padding-top: 1.5rem; margin-top: 1rem;" class="font-mono">
-                    <h4 style="font-size: 0.8rem; font-weight: bold; color: #fff; margin-bottom: 0.75rem;">
-                        INSTALLATION & EXECUTION INSTRUCTIONS:
-                    </h4>
-                    <ol style="font-size: 0.75rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem; padding-left: 1.25rem;">
-                        <li>Download <code style="color: #fff;">RyvenTweaker.exe</code> to your desktop or utility folder.</li>
-                        <li>Right-click the executable and select <strong>"Run as Administrator"</strong>.</li>
-                        <li>Click <strong>"Create Restore Point"</strong> inside the app navigation before applying tweaks.</li>
-                        <li>Select desired tweaks and click <strong>"Apply Selected Optimizations"</strong>.</li>
-                    </ol>
-                </div>
-
+                <a class="btn secondary"
+                   href="https://github.com/goat58235/Ryven-Tweaker/releases">
+                    ALL RELEASES
+                </a>
             </div>
 
+            <p class="notice" id="downloadNotice">
+                The download requires a published GitHub Release
+                containing the Ryven Tweaker EXE.
+            </p>
         </div>
     </section>
+</main>
 
-    <!-- ==========================================================================
-       6. TAB SECTION 5: FAQ & SAFETY
-       ========================================================================== -->
-    <section id="tab-about" class="tab-section">
-        <div class="container" style="max-width: 900px;">
-            
-            <!-- System Safety Warning Banner -->
-            <div class="ryven-panel" style="padding: 1.25rem; border-left: 4px solid var(--accent-red); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: flex-start;">
-                <div style="color: var(--accent-red); font-size: 1.5rem; line-height: 1;">⚠️</div>
-                <div style="font-size: 0.8rem;" class="font-mono">
-                    <strong style="color: #fff; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">SYSTEM RESTORE POINT MANDATE</strong>
-                    Ryven Tweaker modifies system registry keys and OS configurations. Although all modifications are reversible, we strongly recommend creating a System Restore Point prior to applying tweaks.
-                </div>
-            </div>
+<footer>
+    <p>© 2026 RYVEN TWEAKER. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/goat58235">
+            GitHub
+        </a>
+        · Built for Windows
+    </p>
+</footer>
 
-            <div style="margin-bottom: 2rem;">
-                <h2 style="font-size: 2rem; font-weight: 900; text-transform: uppercase;">FREQUENTLY ASKED <span style="color: var(--text-muted);">QUESTIONS</span></h2>
-            </div>
-
-            <!-- FAQ Items -->
-            <div style="display: flex; flex-direction: column; gap: 1rem;" class="font-mono">
-                
-                <div class="ryven-panel" style="padding: 1.25rem;">
-                    <h4 style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">IS RYVEN TWEAKER FREE AND OPEN SOURCE?</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
-                        Yes. Ryven Tweaker is completely free software distributed via GitHub. No hidden subscriptions or locked features.
-                    </p>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.25rem;">
-                    <h4 style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">WILL THIS TRIGGER ANTI-CHEAT IN GAMES LIKE VALORANT OR CS2?</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
-                        No. Ryven Tweaker does not inject code into game processes, hook game memory, or modify game files. It exclusively modifies standard Windows OS configurations and registry parameters.
-                    </p>
-                </div>
-
-                <div class="ryven-panel" style="padding: 1.25rem;">
-                    <h4 style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">HOW DO I REVERT CHANGES IF NEEDED?</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
-                        Inside the application, click "Revert All Tweaks" to restore default Windows registry keys from stored backup snapshots, or use the automated System Restore Point created during setup.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Testimonials Sample Preview Section -->
-            <div style="margin-top: 4rem;">
-                <div class="badge badge-info" style="margin-bottom: 1rem;">
-                    SAMPLE TESTIMONIAL PREVIEWS — REAL COMMUNITY FEEDBACK WILL BE UPDATED UPON PUBLIC RELEASE
-                </div>
-                
-                <div class="grid-3" style="font-family: var(--font-mono); font-size: 0.75rem;">
-                    <div class="ryven-panel" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <span style="color: #facc15;">★★★★★</span>
-                        <p style="color: var(--text-muted); italic">"The 0.5ms timer resolution tweak completely eliminated micro-stutters on my 240Hz monitor in CS2."</p>
-                        <span style="color: var(--silver-bright); font-weight: bold;">— @Apex_Viper</span>
-                    </div>
-
-                    <div class="ryven-panel" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <span style="color: #facc15;">★★★★★</span>
-                        <p style="color: var(--text-muted); italic">"Disabling telemetry bloat freed up nearly 1.5GB of idle RAM background usage."</p>
-                        <span style="color: var(--silver-bright); font-weight: bold;">— @KronoX_PC</span>
-                    </div>
-
-                    <div class="ryven-panel" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <span style="color: #facc15;">★★★★★</span>
-                        <p style="color: var(--text-muted); italic">"Clean black and white utility interface with zero adware. Revert option works flawlessly."</p>
-                        <span style="color: var(--silver-bright); font-weight: bold;">— @Rival_Tech</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       7. DETAIL MODAL (FOR DETAILED TWEAK SPECIFICATIONS)
-       ========================================================================== -->
-    <div id="tweak-modal" class="modal-overlay">
-        <div class="modal-card font-mono">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                <div>
-                    <span id="modal-category-badge" class="badge badge-info">CATEGORY</span>
-                    <h3 id="modal-title" style="font-size: 1.2rem; font-weight: 900; color: #fff; margin-top: 0.25rem;">TWEAK TITLE</h3>
-                </div>
-                <button onclick="closeModal()" style="background: none; border: none; color: var(--text-muted); font-size: 1.25rem; cursor: pointer;">✕</button>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.75rem;">
-                <div>
-                    <strong style="color: var(--silver-bright); display: block; margin-bottom: 0.2rem;">DESCRIPTION & PURPOSE:</strong>
-                    <p id="modal-description" style="color: var(--text-muted); line-height: 1.5;"></p>
-                </div>
-
-                <div>
-                    <strong style="color: var(--silver-bright); display: block; margin-bottom: 0.2rem;">SYSTEM CHANGE SPECIFICATION:</strong>
-                    <code id="modal-changes" style="background: var(--bg-black); padding: 0.5rem; display: block; border: 1px solid var(--border-dark); color: #4ade80;"></code>
-                </div>
-
-                <div>
-                    <strong style="color: var(--accent-red); display: block; margin-bottom: 0.2rem;">POTENTIAL DRAWBACKS & RISKS:</strong>
-                    <p id="modal-drawbacks" style="color: var(--text-muted);"></p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; border-top: 1px solid var(--border-dark); padding-top: 1rem;">
-                    <div>
-                        <span style="color: var(--text-muted); font-size: 0.65rem; display: block;">ADMIN REQUIRED</span>
-                        <strong id="modal-admin" style="color: #fff;">YES</strong>
-                    </div>
-                    <div>
-                        <span style="color: var(--text-muted); font-size: 0.65rem; display: block;">RESTART REQUIRED</span>
-                        <strong id="modal-restart" style="color: #fff;">NO</strong>
-                    </div>
-                    <div>
-                        <span style="color: var(--text-muted); font-size: 0.65rem; display: block;">REVERSIBLE</span>
-                        <strong id="modal-undo" style="color: #4ade80;">YES</strong>
-                    </div>
-                </div>
-            </div>
-
-            <button onclick="closeModal()" class="btn btn-silver" style="width: 100%; margin-top: 1.5rem;">CLOSE SPECIFICATION</button>
-        </div>
-    </div>
-
-    <!-- ==========================================================================
-       8. FOOTER
-       ========================================================================== -->
-    <footer style="border-top: 1px solid var(--border-dark); background: var(--bg-panel); padding: 2.5rem 0;" class="font-mono">
-        <div class="container" style="display: flex; flex-direction: column; gap: 1.5rem;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" stroke="#FFFFFF" stroke-width="4" fill="#0D0D10"/>
-                        <path d="M50 15 L70 35 L58 35 L58 52 L42 52 L42 35 L30 35 Z" fill="#3478F6"/>
-                        <path d="M32 45 L54 45 C64 45 68 50 68 58 C68 65 62 68 54 68 L44 68 L44 82 L32 82 Z" fill="#FFFFFF"/>
-                    </svg>
-                    <span style="font-weight: 900; color: #fff; font-size: 0.9rem; tracking-wider">RYVEN TWEAKER</span>
-                </div>
-
-                <div style="font-size: 0.7rem; color: var(--accent-blue);">
-                    OFFICIAL MOTTO: "WE WANT YOU TO CLIMB TO THE TOP."
-                </div>
-            </div>
-
-            <div style="font-size: 0.65rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-dark); padding-top: 1rem;">
-                DISCLAIMER: Ryven Tweaker is an independent utility software and is not affiliated with, endorsed by, or sponsored by Microsoft Corporation. Windows is a registered trademark of Microsoft Corp. Use system modifications responsibly.
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: var(--text-dim);">
-                <span>&copy; 2026 RYVEN TWEAKER. ALL RIGHTS RESERVED.</span>
-                <a href="https://github.com" target="_blank" style="color: var(--text-muted); text-decoration: none;">GitHub Repository</a>
-            </div>
-
-        </div>
-    </footer>
-
-    <!-- ==========================================================================
-       9. JAVASCRIPT ENGINE & DATABASE
-       ========================================================================== -->
-    <script>
-        /* TWEAKS DATABASE (15 COMPLETE REAL WINDOWS TWEAKS) */
-        const TWEAKS_DATABASE = [
-            {
-                id: "tweak-1",
-                name: "Disable Windows Telemetry & Diagnostic Tracking",
-                category: "PRIVACY",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Disables background telemetry collection, DiagTrack service, and telemetry endpoints.",
-                changes: "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection (AllowTelemetry = 0)",
-                drawbacks: "Disables automated error log submissions to Microsoft feedback hub.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-2",
-                name: "High Precision 0.5ms Timer Resolution Lock",
-                category: "GAMING",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Locks kernel timer resolution to 0.5ms precision to reduce input delay and micro-stuttering.",
-                changes: "NtSetTimerResolution(5000, TRUE, &CurrentResolution)",
-                drawbacks: "Slightly higher idle CPU draw on older dual-core processors.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-3",
-                name: "Nagle's Algorithm & TCP NoDelay Bypass",
-                category: "NETWORK",
-                status: "AVAILABLE",
-                risk: "CAUTION",
-                description: "Disables TCP packet queuing delay (TcpAckFrequency) for instantaneous network packet dispatch in games.",
-                changes: "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces (TcpAckFrequency = 1, TCPNoDelay = 1)",
-                drawbacks: "Increases network packet count on limited bandwidth connections.",
-                admin: true,
-                restart: true,
-                undo: true
-            },
-            {
-                id: "tweak-4",
-                name: "Ultimate Performance Power Plan Unlock",
-                category: "PERFORMANCE",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Unlocks the hidden Windows Ultimate Performance power scheme and eliminates CPU core parking.",
-                changes: "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61",
-                drawbacks: "Higher power consumption on battery-powered laptops.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-5",
-                name: "Disable GameDVR & Xbox Background Recording",
-                category: "GAMING",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Turns off Xbox Game Bar background video encoding to free up GPU hardware encoder resources.",
-                changes: "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR (AppCaptureEnabled = 0)",
-                drawbacks: "Disables native Windows Win+G clip recording overlay.",
-                admin: false,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-6",
-                name: "Disable Network Bandwidth Throttling (NetworkThrottlingIndex)",
-                category: "NETWORK",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Disables Windows default network throttling mechanism for non-multimedia network tasks.",
-                changes: "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile (NetworkThrottlingIndex = ffffffff)",
-                drawbacks: "None under standard gaming workloads.",
-                admin: true,
-                restart: true,
-                undo: true
-            },
-            {
-                id: "tweak-7",
-                name: "Disable Visual FX Animations & Transparency",
-                category: "PERFORMANCE",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Disables window shadow effects, animation transitions, and Aero glass transparency.",
-                changes: "HKCU\\Control Panel\\Desktop (UserPreferencesMask optimized)",
-                drawbacks: "Desktop visual interface appears minimalist.",
-                admin: false,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-8",
-                name: "Disable Advertising ID & Tailored Experiences",
-                category: "PRIVACY",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Blocks targeted advertising tracking IDs and personalized Windows consumer telemetry.",
-                changes: "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo (Enabled = 0)",
-                drawbacks: "None.",
-                admin: false,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-9",
-                name: "Clean Temporary & DirectX Shader Cache",
-                category: "SYSTEM",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Safely purges Windows temp directories, stale prefetch headers, and DirectX shader cache bloat.",
-                changes: "Purges %TEMP%, %SYSTEMROOT%\\Temp, and D3DSCache folders",
-                drawbacks: "Games may rebuild shader caches on first launch.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-10",
-                name: "Disable Fullscreen Optimizations Globally",
-                category: "GAMING",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Forces native exclusive fullscreen mode to minimize DWM compositor display latency.",
-                changes: "HKCU\\System\\GameConfigStore (GameDVR_FSEBehaviorMode = 2)",
-                drawbacks: "Slightly slower Alt-Tab switching times.",
-                admin: false,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-11",
-                name: "Disable Hibernate & Purge hiberfil.sys",
-                category: "PERFORMANCE",
-                status: "SYSTEM",
-                risk: "LOW",
-                description: "Disables Windows Hibernation to instantly free up gigabytes of drive storage space.",
-                changes: "powercfg -h off",
-                drawbacks: "Disables Windows Fast Startup fast boot mode.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-12",
-                name: "Disable Search Indexer During Gameplay",
-                category: "ADVANCED",
-                status: "PLANNED",
-                risk: "CAUTION",
-                description: "Automatically pauses WSearch indexer service when a full-screen game process is detected.",
-                changes: "Service state hook on WSearch process trigger",
-                drawbacks: "File searches in File Explorer will be slower while gaming.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-13",
-                name: "NVIDIA/AMD Driver Telemetry Stripper",
-                category: "ADVANCED",
-                status: "PLANNED",
-                risk: "EXPERT",
-                description: "Automated utility module to disable display driver telemetry services (NvTelemetryContainer).",
-                changes: "Disables NvTelemetryContainer service triggers",
-                drawbacks: "Disables GeForce Experience auto driver updates.",
-                admin: true,
-                restart: true,
-                undo: true
-            },
-            {
-                id: "tweak-14",
-                name: "Disable Windows Location Tracking",
-                category: "PRIVACY",
-                status: "AVAILABLE",
-                risk: "LOW",
-                description: "Disables OS-level location sensor services and application location access.",
-                changes: "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors (DisableLocation = 1)",
-                drawbacks: "Maps and Weather apps will require manual location input.",
-                admin: true,
-                restart: false,
-                undo: true
-            },
-            {
-                id: "tweak-15",
-                name: "Clear Standby RAM Memory List",
-                category: "PERFORMANCE",
-                status: "PLANNED",
-                risk: "LOW",
-                description: "Automatic cache cleaner that flushes Windows Standby RAM cache lists when free memory drops below 10%.",
-                changes: "EmptyWorkingSet / MemoryCacheList clear call",
-                drawbacks: "None.",
-                admin: true,
-                restart: false,
-                undo: true
-            }
-        ];
-
-        let currentActiveCategory = "ALL";
-
-        /* Render Tweak Cards into Grid */
-        function renderTweaksGrid() {
-            const grid = document.getElementById("tweaks-grid");
-            const searchVal = document.getElementById("tweak-search").value.toLowerCase();
-            grid.innerHTML = "";
-
-            let visibleCount = 0;
-
-            TWEAKS_DATABASE.forEach(tweak => {
-                // Category match
-                const matchCategory = (currentActiveCategory === "ALL" || tweak.category === currentActiveCategory);
-                // Search match
-                const matchSearch = tweak.name.toLowerCase().includes(searchVal) || 
-                                    tweak.description.toLowerCase().includes(searchVal) ||
-                                    tweak.category.toLowerCase().includes(searchVal);
-
-                if (matchCategory && matchSearch) {
-                    visibleCount++;
-
-                    // Status Badge
-                    let statusBadgeClass = "badge-available";
-                    if (tweak.status === "PLANNED") statusBadgeClass = "badge-planned";
-
-                    // Risk Badge
-                    let riskBadgeClass = "badge-risk-low";
-                    if (tweak.risk === "CAUTION") riskBadgeClass = "badge-risk-caution";
-                    if (tweak.risk === "EXPERT") riskBadgeClass = "badge-risk-expert";
-
-                    const card = document.createElement("div");
-                    card.className = "ryven-panel ryven-panel-interactive font-mono";
-                    card.style.padding = "1.25rem";
-                    card.style.display = "flex";
-                    card.style.flexDirection = "column";
-                    card.style.justifyContent = "space-between";
-                    card.style.gap = "1rem";
-
-                    card.innerHTML = `
-                        <div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                                <span class="badge ${statusBadgeClass}">${tweak.status}</span>
-                                <span class="badge ${riskBadgeClass}">RISK: ${tweak.risk}</span>
-                            </div>
-
-                            <h4 style="font-size: 0.9rem; font-weight: bold; color: #fff; margin-bottom: 0.4rem;">${tweak.name}</h4>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">${tweak.description}</p>
-                        </div>
-
-                        <div style="border-top: 1px solid var(--border-dark); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="badge badge-info" style="font-size: 0.55rem;">${tweak.category}</span>
-                            <button onclick="openModal('${tweak.id}')" style="background: none; border: none; color: var(--silver-bright); font-size: 0.65rem; font-weight: bold; cursor: pointer; text-decoration: underline;">
-                                DETAILS & RISKS →
-                            </button>
-                        </div>
-                    `;
-
-                    grid.appendChild(card);
-                }
-            });
-
-            document.getElementById("tweak-count-display").textContent = visibleCount;
-        }
-
-        /* Filter Functions */
-        function filterTweakLibrary() {
-            renderTweaksGrid();
-        }
-
-        function setCategoryFilter(category, btnEl) {
-            currentActiveCategory = category;
-            
-            // Highlight buttons
-            const buttons = document.querySelectorAll("#category-filter-bar .btn");
-            buttons.forEach(btn => {
-                btn.className = "btn btn-outline";
-                btn.style.padding = "0.4rem 0.8rem";
-                btn.style.fontSize = "0.65rem";
-            });
-            btnEl.className = "btn btn-silver";
-            btnEl.style.padding = "0.4rem 0.8rem";
-            btnEl.style.fontSize = "0.65rem";
-
-            renderTweaksGrid();
-        }
-
-        /* Navigation Tab Switching */
-        function switchTab(tabId) {
-            const sections = document.querySelectorAll('.tab-section');
-            sections.forEach(sec => sec.classList.remove('active'));
-
-            const targetSection = document.getElementById(`tab-${tabId}`);
-            if (targetSection) targetSection.classList.add('active');
-
-            const navBtns = document.querySelectorAll('.nav-link');
-            navBtns.forEach(btn => btn.classList.remove('active'));
-
-            const activeBtn = document.getElementById(`nav-btn-${tabId}`);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            // Close mobile menu if open
-            document.getElementById('nav-menu').classList.remove('mobile-open');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            if (tabId === 'telemetry') {
-                queryHardwareTelemetry();
-            }
-        }
-
-        function toggleMobileNav() {
-            document.getElementById('nav-menu').classList.toggle('mobile-open');
-        }
-
-        /* Query Real Web Hardware Telemetry APIs */
-        function queryHardwareTelemetry() {
-            // CPU Threads
-            const cpuCores = navigator.hardwareConcurrency || "N/A";
-            document.getElementById("telemetry-cpu-cores").textContent = `${cpuCores} Threads`;
-
-            // RAM Size
-            const ramGb = navigator.deviceMemory || "N/A";
-            document.getElementById("telemetry-ram").textContent = ramGb !== "N/A" ? `~${ramGb} GB` : "N/A";
-
-            // Resolution
-            document.getElementById("telemetry-screen").textContent = `${window.screen.width} x ${window.screen.height}`;
-
-            // Platform
-            document.getElementById("telemetry-platform").textContent = navigator.platform || "x64 Windows";
-        }
-
-        /* Modal Details Popup */
-        function openModal(tweakId) {
-            const tweak = TWEAKS_DATABASE.find(t => t.id === tweakId);
-            if (!tweak) return;
-
-            document.getElementById("modal-category-badge").textContent = tweak.category;
-            document.getElementById("modal-title").textContent = tweak.name;
-            document.getElementById("modal-description").textContent = tweak.description;
-            document.getElementById("modal-changes").textContent = tweak.changes;
-            document.getElementById("modal-drawbacks").textContent = tweak.drawbacks;
-            document.getElementById("modal-admin").textContent = tweak.admin ? "YES" : "NO";
-            document.getElementById("modal-restart").textContent = tweak.restart ? "YES" : "NO";
-            document.getElementById("modal-undo").textContent = tweak.undo ? "YES" : "NO";
-
-            document.getElementById("tweak-modal").classList.add("open");
-        }
-
-        function closeModal() {
-            document.getElementById("tweak-modal").classList.remove("open");
-        }
-
-        /* GitHub URL Configurator Binding */
-        function bindGithubReleaseUrl() {
-            const inputUrl = document.getElementById("github-url-input").value.trim();
-            const masterBtn = document.getElementById("master-download-btn");
-            const statusMsg = document.getElementById("url-status-message");
-
-            if (inputUrl && inputUrl.startsWith("http")) {
-                masterBtn.setAttribute("href", inputUrl);
-                statusMsg.textContent = `✓ Successfully connected: Download button now links directly to "${inputUrl}"`;
-                statusMsg.style.display = "block";
-            } else {
-                alert("Please paste a valid executable URL starting with http:// or https://");
-            }
-        }
-
-        /* Initial Execution */
-        window.onload = function() {
-            renderTweaksGrid();
-            queryHardwareTelemetry();
-        };
-    </script>
 </body>
 </html>
